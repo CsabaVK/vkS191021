@@ -5,7 +5,28 @@ select * from `&_pc` where `sebesseg`  >= 3.00;
 select modell from `&_pc`
 where `sebesseg` >= 3.00;
 
-select * from `&_laptopok` t inner join `&_termekek` I ON t.laptop_id = I.modell;
+select * from `&_laptopok` t 
+	inner join `&_termekek` I 
+	ON t.laptop_id = I.modell;
+
+select gyarto 
+	from `&_laptopok` t 
+	inner join `&_termekek` I 
+	ON t.laptop_id = I.modell 
+	where hattertar >= 100;
+	
+	select  modell, ar 
+	from 
+  		(select laptop_id modell, ar from `&_laptopok`
+			union
+		select modell, ar from `&_pc`
+			union
+		select modell, ar from `&_nyomtatok` ) T
+	inner join `&_termekek` 
+		using(`modell`)
+			where gyarto = 'B';
+		
+select gyarto, tipus db from `&_termekek` group by gyarto, tipus
 
 
 /*111111111111111111111111*/
